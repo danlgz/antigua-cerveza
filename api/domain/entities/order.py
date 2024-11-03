@@ -1,8 +1,8 @@
-from datetime import date
+from datetime import datetime
 from typing import List
 from uuid import UUID
 
-from pydantic import PositiveFloat
+from pydantic import NonNegativeFloat
 from pydantic.types import PositiveInt
 
 from .base import Base
@@ -18,8 +18,8 @@ class OrderItem(Base):
         total (PositiveFloat): Total cost for this item, calculated as quantity multiplied by price per unit.
     """
     beer_stock_id: UUID
-    price_per_unit: PositiveFloat
-    total: PositiveFloat
+    price_per_unit: NonNegativeFloat
+    total: NonNegativeFloat
 
 
 class OrderRoundItem(Base):
@@ -42,7 +42,7 @@ class OrderRound(Base):
         created (date): Date when the round was created.
         items (List[OrderRoundItem]): List of items in this round of the order.
     """
-    created: date
+    created: datetime
     items: List[OrderRoundItem]
 
 
@@ -59,10 +59,11 @@ class Order(Base):
         items (List[OrderItem]): List of items included in the order.
         rounds (List[OrderRound]): List of rounds, each containing items ordered in separate batches.
     """
+    id: UUID
     paid: bool
-    total: PositiveFloat
-    subtotal: PositiveFloat
-    taxes: PositiveFloat
-    discounts: PositiveFloat
+    total: NonNegativeFloat
+    subtotal: NonNegativeFloat
+    taxes: NonNegativeFloat
+    discounts: NonNegativeFloat
     items: List[OrderItem]
     rounds: List[OrderRound]
