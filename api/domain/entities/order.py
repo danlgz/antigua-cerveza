@@ -14,8 +14,8 @@ class OrderItem(Base):
 
     Attributes:
         beer_stock_id (UUID): Unique identifier for the beer stock item.
-        price_per_unit (PositiveFloat): Price of each unit of the beer.
-        total (PositiveFloat): Total cost for this item, calculated as quantity multiplied by price per unit.
+        price_per_unit (NonNegativeFloat): Price of each unit of the beer.
+        total (NonNegativeFloat): Total cost for this item, calculated as quantity multiplied by price per unit.
     """
     beer_stock_id: UUID
     price_per_unit: NonNegativeFloat
@@ -52,10 +52,10 @@ class Order(Base):
 
     Attributes:
         paid (bool): Payment status of the order.
-        total (PositiveFloat): Final total of the order after taxes and discounts.
-        subtotal (PositiveFloat): Initial subtotal before any taxes and discounts.
-        taxes (PositiveFloat): Total tax amount applied to the order.
-        discounts (PositiveFloat): Total discounts applied to the order.
+        total (NonNegativeFloat): Final total of the order after taxes and discounts.
+        subtotal (NonNegativeFloat): Initial subtotal before any taxes and discounts.
+        taxes (NonNegativeFloat): Total tax amount applied to the order.
+        discounts (NonNegativeFloat): Total discounts applied to the order.
         items (List[OrderItem]): List of items included in the order.
         rounds (List[OrderRound]): List of rounds, each containing items ordered in separate batches.
     """
