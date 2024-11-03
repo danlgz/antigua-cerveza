@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import datetime
 from uuid import UUID
 
 from pydantic import PositiveFloat, PositiveInt
@@ -22,4 +22,4 @@ class BeerStock(Base):
     name: str
     price: PositiveFloat
     quantity: PositiveInt
-    last_updated: date
+    last_updated: datetime
