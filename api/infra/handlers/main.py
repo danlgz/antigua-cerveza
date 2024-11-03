@@ -1,10 +1,10 @@
 # main.py
 from typing import List
 
-from application.use_cases import ListBeersStockByIdsUseCase
+from application.use_cases import ListBeersStockByIdsUseCase, ListOrdersUsecase
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
-from infra.data.memory import MemoryBeersStockRepository
+from infra.data.memory import MemoryBeersStockRepository, MemoryOrdersRepository
 
 app = FastAPI(title="Antigua Cerveza API")
 
@@ -58,4 +58,8 @@ async def list_beers_stock(ids: List[str] = Query([], alias="id")):
 
 @app.get("/api/v1/orders")
 async def get_order():
-    return MOCK_ORDERS
+    repo = MemoryOrdersRepository()
+    use_case = ListOrdersUsecase(orders_repository=repo)
+
+    orders = use_case.execute()
+    return orders
