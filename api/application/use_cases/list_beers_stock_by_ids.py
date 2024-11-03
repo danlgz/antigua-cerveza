@@ -7,7 +7,7 @@ from domain.repositories import BeersStockRepository
 logger = logging.getLogger(__name__)
 
 
-class ListBeersStockByIds:
+class ListBeersStockByIdsUseCase:
     def __init__(self, beers_stock_repository: BeersStockRepository):
         self._beers_stock_repository = beers_stock_repository
 
