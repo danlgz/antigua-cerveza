@@ -3,4 +3,4 @@
 default: dev
 
 dev:
-	source api/venv/bin/activate && cd api && uvicorn main:app --reload
+	PYTHONPATH=api source api/venv/bin/activate && uvicorn api.infra.handlers.main:app --reload
