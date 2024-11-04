@@ -48,7 +48,7 @@ export default function OrderDetailCard({ order: { total, rounds, items, paid, s
         </div>
 
         <div className="flex justify-center">
-          <Tabs defaultValue="rounds" className="flex flex-col items-center w-full">
+          <Tabs defaultValue="beers" className="flex flex-col items-center w-full">
             <TabsList className="mb-4">
               <TabsTrigger value="beers" className="px-10">Beers</TabsTrigger>
               <TabsTrigger value="rounds" className="px-10">Rounds</TabsTrigger>
