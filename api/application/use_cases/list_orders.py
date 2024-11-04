@@ -13,13 +13,13 @@ class ListOrdersUsecase:
         orders = []
 
         for order in self._orders_repository.list():
-            group = self._order_round_beer_calculator.calculate_order_summary(order.rounds)
-            subtotal = group.total
+            summary = self._order_round_beer_calculator.calculate_order_summary(order.rounds)
+            subtotal = summary.total
 
             orders.append(
                 Order(
                     **order.dict(exclude={"items", "subtotal", "total"}),
-                    items=group.items,
+                    items=summary.items,
                     subtotal=subtotal,
                     total=round(subtotal - order.taxes - order.discounts, 2),
                 )

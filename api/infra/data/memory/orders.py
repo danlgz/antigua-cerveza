@@ -4,6 +4,7 @@ from typing import Dict, List
 from uuid import UUID
 
 from domain.entities import Order, OrderRound, OrderRoundItem
+from domain.exceptions import OrderDoesNotExists
 from domain.repositories import OrdersRepository
 
 date_format = "%Y-%m-%d %H:%M:%S"
@@ -46,7 +47,7 @@ ORDERS = [
         total=0, # calculaded from subtotal, taxes and discounts
     ),
     Order(
-        id=UUID("96413732-3142-47c4-ad78-e99fec8a5492"),
+        id=UUID("f008d7af-3c95-46ef-b29f-72c9f6040d7e"),
         discounts=4.0,
         items=[],
         paid=False,
@@ -80,6 +81,6 @@ class MemoryOrdersRepository(OrdersRepository):
     def retrieve_by_id(self, id: str) -> Order:
         order = ORDERS_BY_ID.get(id)
         if order is None:
-            raise Exception('Order not found')
+            raise OrderDoesNotExists(f'Requested order with id ”{id}” does not exists')
 
         return order

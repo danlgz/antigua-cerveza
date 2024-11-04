@@ -1,7 +1,11 @@
 # main.py
 from typing import List
 
-from application.use_cases import ListBeersStockByIdsUseCase, ListOrdersUsecase
+from application.use_cases import (
+    ListBeersStockByIdsUseCase,
+    ListOrdersUsecase,
+    RetrieveOrderUsecase,
+)
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 from infra.data.memory import MemoryBeersStockRepository, MemoryOrdersRepository
@@ -57,10 +61,20 @@ async def list_beers_stock(ids: List[str] = Query([], alias="id")):
 
 
 @app.get("/api/v1/orders")
-async def get_order():
+async def list_orders():
     orders_repo = MemoryOrdersRepository()
     beers_stock_repo = MemoryBeersStockRepository()
     use_case = ListOrdersUsecase(orders_repository=orders_repo, beers_stock_repository=beers_stock_repo)
 
     orders = use_case.execute()
     return orders
+
+
+@app.get("/api/v1/orders/{id}")
+async def get_order(id: str):
+    orders_repo = MemoryOrdersRepository()
+    beers_stock_repo = MemoryBeersStockRepository()
+    use_case = RetrieveOrderUsecase(orders_repository=orders_repo, beers_stock_repository=beers_stock_repo)
+
+    order = use_case.execute(id=id)
+    return order
