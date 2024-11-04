@@ -48,6 +48,7 @@ class TestListOrders(TestCase):
                 price=5.18,
                 last_updated=datetime.strptime("2024-10-03 15:30:00", "%Y-%m-%d %H:%M:%S"),
                 quantity=100,
+                img="/",
             )
         ]
 

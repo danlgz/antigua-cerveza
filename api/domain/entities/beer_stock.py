@@ -23,3 +23,4 @@ class BeerStock(Base):
     price: PositiveFloat
     quantity: PositiveInt
     last_updated: datetime
+    img: str
