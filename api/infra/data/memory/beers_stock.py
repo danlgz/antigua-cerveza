@@ -7,8 +7,6 @@ from domain.repositories import BeersStockRepository
 
 from .data import BEERS_STOCK
 
-# iter the list only once and then just call by direct reference provided (hashmap)
-BEERS_STOCK_BY_ID: Dict[str, BeerStock] = reduce(lambda acc, beer: {str(beer.id): beer, **acc}, BEERS_STOCK, {})
 
 def _create_beer_map(beers: List[BeerStock]) -> Dict[str, BeerStock]:
     return reduce(
@@ -16,6 +14,10 @@ def _create_beer_map(beers: List[BeerStock]) -> Dict[str, BeerStock]:
         beers,
         {}
     )
+
+
+# iter the list only once and then just call by direct reference provided (hashmap)
+BEERS_STOCK_BY_ID: Dict[str, BeerStock] = _create_beer_map(BEERS_STOCK)
 
 
 class MemoryBeersStockRepository(BeersStockRepository):
