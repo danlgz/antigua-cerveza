@@ -26,8 +26,9 @@ export default function OrderCardSkeleton() {
           </div>
         </div>
       </CardContent>
-      <CardFooter className="flex justify-end mb-2">
-        <Skeleton className="h-9 w-28" />
+      <CardFooter className="flex justify-between mb-2">
+        <Skeleton className="h-8 w-16" />
+        <Skeleton className="h-8 w-28" />
       </CardFooter>
     </Card>
   )

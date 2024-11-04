@@ -1,6 +1,9 @@
 'use server'
 
-export async function listOrders() {
+import camelcaseKeys from 'camelcase-keys';
+import { Order } from "@/types/order";
+
+export default async function listOrders() {
   const response = await fetch(`${process.env.API_HOST}/api/v1/orders`)
-  return response.json()
+  return camelcaseKeys(await response.json(), { deep: true }) as Order[];
 }
