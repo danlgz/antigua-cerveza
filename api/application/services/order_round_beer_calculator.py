@@ -37,7 +37,7 @@ class OrderRoundBeerCalculator:
         total_amount = round(sum(summary.total for summary in beer_summaries.values()), 2)
 
         return OrderSummary(
-            items=[OrderItem(**summary.dict()) for summary in beer_summaries.values()],
+            items=[OrderItem(**summary.model_dump()) for summary in beer_summaries.values()],
             total=total_amount
         )
 

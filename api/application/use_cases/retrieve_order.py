@@ -16,7 +16,7 @@ class RetrieveOrderUsecase:
         subtotal = summary.total
 
         return Order(
-            **order.dict(exclude={"items", "subtotal", "total"}),
+            **order.model_dump(exclude={"items", "subtotal", "total"}),
             items=summary.items,
             subtotal=subtotal,
             total=round(subtotal - order.taxes - order.discounts, 2),
