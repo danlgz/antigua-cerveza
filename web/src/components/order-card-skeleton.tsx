@@ -3,7 +3,7 @@ import { Skeleton } from "@/components/ui/skeleton"
 
 function BeerAvatarSkeleton() {
   return (
-    <Skeleton className="h-16 w-9 rounded-sm" />
+    <Skeleton className="h-16 w-10 rounded-sm" />
   )
 }
 
@@ -18,7 +18,7 @@ export default function OrderCardSkeleton() {
           <Skeleton className="h-3 w-32" />
         </div>
         <div className="flex flex-col items-end">
-          <Skeleton className="h-4 w-28 mb-2" />
+          <Skeleton className="h-4 w-28 mb-4" />
           <div className="flex gap-2 overflow-hidden justify-end">
             <BeerAvatarSkeleton />
             <BeerAvatarSkeleton />
@@ -27,7 +27,7 @@ export default function OrderCardSkeleton() {
         </div>
       </CardContent>
       <CardFooter className="flex justify-end mb-2">
-        <Skeleton className="h-9 w-24" />
+        <Skeleton className="h-9 w-28" />
       </CardFooter>
     </Card>
   )

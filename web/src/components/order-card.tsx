@@ -38,7 +38,7 @@ export default function OrderCard({ total, rounds, items }: Props) {
             <BeerAvatar imgName="sin-novia" />
             <BeerAvatar imgName="muy-noble" />
             <BeerAvatar imgName="don-nadie" />
-            <BeerAvatar imgName="cucurucho" />
+            {/* <BeerAvatar imgName="cucurucho" /> */}
           </div>
         </div>
       </CardContent>

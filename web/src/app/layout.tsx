@@ -33,7 +33,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
       >
         <Navbar lightLogo={LightLogo} darkLogo={DarkLogo} />
-        <main className="max-w-screen-lg mx-auto p-4">
+        <main className="max-w-screen-lg mx-auto p-4 my-4">
           {children}
         </main>
       </body>
