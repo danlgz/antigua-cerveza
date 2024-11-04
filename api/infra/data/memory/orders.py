@@ -33,6 +33,10 @@ ORDERS = [
                     OrderRoundItem(
                         beer_stock_id=UUID("4cc1aad9-6800-4161-a7d5-83564cfad766"),
                         quantity=3
+                    ),
+                    OrderRoundItem(
+                        beer_stock_id=UUID("6aa57346-1357-47b0-923e-7a416427afae"),
+                        quantity=1
                     )
                 ]
             )

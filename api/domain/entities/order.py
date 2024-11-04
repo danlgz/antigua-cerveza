@@ -16,10 +16,12 @@ class OrderItem(Base):
         beer_stock_id (UUID): Unique identifier for the beer stock item.
         price_per_unit (NonNegativeFloat): Price of each unit of the beer.
         total (NonNegativeFloat): Total cost for this item, calculated as quantity multiplied by price per unit.
+        quantity (PositiveInt): Quantity of the beers ordered.
     """
     beer_stock_id: UUID
     price_per_unit: NonNegativeFloat
     total: NonNegativeFloat
+    quantity: PositiveInt
 
 
 class OrderRoundItem(Base):

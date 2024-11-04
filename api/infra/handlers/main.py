@@ -58,8 +58,9 @@ async def list_beers_stock(ids: List[str] = Query([], alias="id")):
 
 @app.get("/api/v1/orders")
 async def get_order():
-    repo = MemoryOrdersRepository()
-    use_case = ListOrdersUsecase(orders_repository=repo)
+    orders_repo = MemoryOrdersRepository()
+    beers_stock_repo = MemoryBeersStockRepository()
+    use_case = ListOrdersUsecase(orders_repository=orders_repo, beers_stock_repository=beers_stock_repo)
 
     orders = use_case.execute()
     return orders
