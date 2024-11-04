@@ -64,7 +64,7 @@ ORDERS = [
                         quantity=1
                     ),
                     OrderRoundItem(
-                        beer_stock_id=UUID("4cc1aad9-6800-4161-a7d5-83564cfad766"),
+                        beer_stock_id=UUID("ae32e245-b08d-434f-b4c8-aef38aef7e38"),
                         quantity=3
                     ),
                     OrderRoundItem(

@@ -6,15 +6,16 @@ import Image from "next/image"
 
 
 type Props = {
-  imgName: string
+  imgName: string;
+  className?: string;
 }
 
-export default function BeerImage({ imgName }: Props) {
+export default function BeerImage({ imgName, className }: Props) {
   let img = Cucurucho;
 
   if (imgName === "don-nadie") img = DonNadie
   if (imgName === "muy-noble") img = MuyNoble
   if (imgName === "sin-novia") img = SinNovia
 
-  return <Image src={img} alt={imgName} width={50} height={100} />
+  return <Image src={img} alt={imgName} width={50} height={100} className={className} />
 }

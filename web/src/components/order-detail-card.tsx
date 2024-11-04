@@ -6,6 +6,13 @@ import Link from "next/link";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { BeerStock } from "@/types/beer-stock";
 import OrderItemCard from "./order-item-card";
+import BeerImage from "./beer-image";
+import RoundItemCard from "./round-item-card";
+
+const USDollar = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+});
 
 
 type Props = {
@@ -41,12 +48,12 @@ export default function OrderDetailCard({ order: { total, rounds, items, paid, s
         </div>
 
         <div className="flex justify-center">
-          <Tabs defaultValue="beers" className="flex flex-col items-center w-full">
-            <TabsList>
+          <Tabs defaultValue="rounds" className="flex flex-col items-center w-full">
+            <TabsList className="mb-4">
               <TabsTrigger value="beers" className="px-10">Beers</TabsTrigger>
               <TabsTrigger value="rounds" className="px-10">Rounds</TabsTrigger>
             </TabsList>
-            <TabsContent value="beers" className="w-full flex flex-col gap-4 mt-4">
+            <TabsContent value="beers" className="w-full flex flex-col gap-4">
               {
                 items.map(item => {
                   const beer = beersById[item.beerStockId];
@@ -54,18 +61,22 @@ export default function OrderDetailCard({ order: { total, rounds, items, paid, s
                 })
               }
             </TabsContent>
-            <TabsContent value="rounds" className="border w-full">
-              Change your password here.
+            <TabsContent value="rounds" className="w-full flex flex-col gap-4">
+              {
+                rounds.map((round, i) => (
+                  <RoundItemCard key={i} round={round} beersById={beersById} ordinal={i + 1} />
+                ))
+              }
             </TabsContent>
           </Tabs>
         </div>
       </CardContent>
       <CardFooter className="flex flex-col justify-center mb-2 mt-4 items-center">
         <div className="w-full text-right text-sm">
-          <p>Subtotal: ${subtotal}</p>
-          <p>Taxes: ${taxes}</p>
-          <p>Discounts: ${discounts}</p>
-          <h3 className="font-bold text-base my-2">Total: ${total}</h3>
+          <p className="bg-opacity-50">Subtotal: {USDollar.format(subtotal)}</p>
+          <p className="bg-opacity-50">Taxes: {USDollar.format(taxes)}</p>
+          <p className="bg-opacity-50">Discounts: {USDollar.format(discounts)}</p>
+          <h3 className="font-bold text-base my-2">Total: {USDollar.format(total)}</h3>
         </div>
         <Link href="/">
           <Button variant="outline">Go back</Button>
