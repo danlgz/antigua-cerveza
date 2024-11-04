@@ -56,5 +56,3 @@ Or your can run this for generate a coverage report
 ```bash
 make test-report
 ```
-
-![cov report](./assets/cov-report.png)
