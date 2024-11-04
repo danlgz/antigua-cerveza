@@ -86,6 +86,6 @@ class TestListOrders(TestCase):
                 ],
                 subtotal=15.54,
                 taxes=4.0,
-                total=7.54, # calculaded: subtotal - taxes - discounts
+                total=15.54, # calculaded: subtotal + taxes - discounts
             )
         ])
