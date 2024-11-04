@@ -12,7 +12,7 @@ BEERS_STOCK = [
         price=5.18,
         last_updated=datetime.strptime("2024-10-03 15:30:00", date_format),
         quantity=100,
-        img="/",
+        img="sin-novia",
     ),
     BeerStock(
         id=UUID("152b6a83-2069-4cd8-a67e-9eb70dfc444b"),
@@ -20,7 +20,7 @@ BEERS_STOCK = [
         price=5.18,
         last_updated=datetime.strptime("2024-10-03 15:30:00", date_format),
         quantity=100,
-        img="/",
+        img="cucurucho",
     ),
     BeerStock(
         id=UUID("4bfda8eb-3531-4efa-ab19-bf41f8482f14"),
@@ -28,15 +28,15 @@ BEERS_STOCK = [
         price=5.18,
         last_updated=datetime.strptime("2024-10-03 15:30:00", date_format),
         quantity=100,
-        img="/",
+        img="muy-noble",
     ),
     BeerStock(
         id=UUID("4cc1aad9-6800-4161-a7d5-83564cfad766"),
-        name="Panza Verde",
+        name="Don Nadie",
         price=5.18,
         last_updated=datetime.strptime("2024-10-03 15:30:00", date_format),
         quantity=100,
-        img="/",
+        img="don-nadie",
     )
 ]
 
