@@ -44,6 +44,26 @@ ORDERS = [
         subtotal=0, # calculated from rounds
         taxes=10, # this should be calculated based on some tax country criteria, in this example will be hardcoded
         total=0, # calculaded from subtotal, taxes and discounts
+    ),
+    Order(
+        id=UUID("96413732-3142-47c4-ad78-e99fec8a5492"),
+        discounts=4.0,
+        items=[],
+        paid=False,
+        rounds=[
+            OrderRound(
+                created=datetime.strptime("2024-10-03 15:50:00", date_format),
+                items=[
+                    OrderRoundItem(
+                        beer_stock_id=UUID("4bfda8eb-3531-4efa-ab19-bf41f8482f14"),
+                        quantity=3
+                    ),
+                ]
+            )
+        ],
+        subtotal=0,
+        taxes=4.0,
+        total=0,
     )
 ]
 

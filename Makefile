@@ -8,3 +8,8 @@ dev:
 test:
 	python -m coverage run -m unittest discover api/
 	python -m coverage report
+
+test-html:
+	make test
+	python -m coverage html
+	open htmlcov/index.html

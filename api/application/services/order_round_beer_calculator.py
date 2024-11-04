@@ -34,7 +34,7 @@ class OrderRoundBeerCalculator:
         beers = self._beer_stock_repository.list_by_ids(list(grouped_items.keys()))
 
         beer_summaries = self._calculate_beer_summaries(beers, grouped_items)
-        total_amount = sum(summary.total for summary in beer_summaries.values())
+        total_amount = round(sum(summary.total for summary in beer_summaries.values()), 2)
 
         return OrderSummary(
             items=[OrderItem(**summary.dict()) for summary in beer_summaries.values()],
@@ -68,7 +68,7 @@ class OrderRoundBeerCalculator:
                 continue
 
             quantity = sum(item.quantity for item in grouped_items[beer_id])
-            total = quantity * beer.price
+            total = round(quantity * beer.price, 2)
 
             summaries[beer_id] = OrderItem(
                 price_per_unit=beer.price,

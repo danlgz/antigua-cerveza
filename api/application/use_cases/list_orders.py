@@ -21,7 +21,7 @@ class ListOrdersUsecase:
                     **order.dict(exclude={"items", "subtotal", "total"}),
                     items=group.items,
                     subtotal=subtotal,
-                    total=subtotal - order.taxes - order.discounts,
+                    total=round(subtotal - order.taxes - order.discounts, 2),
                 )
             )
 

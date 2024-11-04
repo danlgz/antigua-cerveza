@@ -12,7 +12,6 @@ from domain.repositories import BeersStockRepository
 
 class TestListBeersStockByIdsUseCase(TestCase):
     def test_list_beers_stock_successfully(self):
-        print("heeey")
         repo = Mock(BeersStockRepository)
         mock = [
             BeerStock(
