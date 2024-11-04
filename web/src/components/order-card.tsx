@@ -11,18 +11,25 @@ function BeerAvatar({ imgName }: { imgName: string }) {
   )
 }
 
-export default function OrderCard() {
+
+type Props = {
+  total: number
+  rounds: [],
+  items: [],
+}
+
+export default function OrderCard({ total, rounds, items }: Props) {
   return (
     <Card className="w-full">
       <CardContent className="flex justify-between items-top pt-8">
         <div>
           <p className="text-sm font-medium mb-2">Order #1234</p>
-          <h1 className="text-4xl font-bold mb-2">$50.00</h1>
+          <h1 className="text-4xl font-bold mb-2">${total}</h1>
           <p className="text-xs text-muted-foreground">
-            Total Rounds: 10
+            Total Rounds: {rounds.length}
           </p>
           <p className="text-xs text-muted-foreground">
-            Total Beers: 15
+            Total Beers: {items.length}
           </p>
         </div>
         <div>
