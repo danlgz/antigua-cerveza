@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Navbar from "@/components/navbar";
+import LightLogo from "@/app/images/antigua-cerveza-logo.png"
+import DarkLogo from "@/app/images/antigua-cerveza-logo-dark.png"
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,9 +30,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
       >
-        {children}
+        <Navbar lightLogo={LightLogo} darkLogo={DarkLogo} />
+        <main className="max-w-screen-lg mx-auto p-4">
+          {children}
+        </main>
       </body>
     </html>
   );
