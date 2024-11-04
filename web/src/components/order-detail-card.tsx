@@ -13,7 +13,7 @@ type Props = {
   beers: BeerStock[];
 }
 
-export default function OrderDetailCard({ order: { total, rounds, items, paid }, beers }: Props) {
+export default function OrderDetailCard({ order: { total, rounds, items, paid, subtotal, discounts, taxes }, beers }: Props) {
   const beersById = (beers || []).reduce((prev, beer) => {
     prev[beer.id] = beer;
     return prev;
@@ -60,7 +60,13 @@ export default function OrderDetailCard({ order: { total, rounds, items, paid },
           </Tabs>
         </div>
       </CardContent>
-      <CardFooter className="flex justify-center mb-2 mt-4 items-center">
+      <CardFooter className="flex flex-col justify-center mb-2 mt-4 items-center">
+        <div className="w-full text-right text-sm">
+          <p>Subtotal: ${subtotal}</p>
+          <p>Taxes: ${taxes}</p>
+          <p>Discounts: ${discounts}</p>
+          <h3 className="font-bold text-base my-2">Total: ${total}</h3>
+        </div>
         <Link href="/">
           <Button variant="outline">Go back</Button>
         </Link>
