@@ -3,8 +3,7 @@
 This project is inpired from craft brewry [Antigua Cerveza](https://www.antiguacerveza.com/english). Based on Antigua Guatemala.
 
 ## Demo
-![cov report](./assets/demo.mov)
-
+![demo video](./assets/demo.mp4)
 
 ## Setup
 
