@@ -9,6 +9,7 @@ type MakeRequestResult<T> = {
   status: number;
   data?: T;
   error?: ResponseError;
+  ok: boolean;
 }
 
 export default async function makeRequest<T>(path: string, tags: string[] = []): Promise<MakeRequestResult<T>> {
@@ -25,6 +26,7 @@ export default async function makeRequest<T>(path: string, tags: string[] = []):
       const error = (await response.json()) as ResponseError | undefined;
 
       return {
+        ok: false,
         status: response.status,
         error,
         data: undefined,
@@ -32,12 +34,14 @@ export default async function makeRequest<T>(path: string, tags: string[] = []):
     }
 
     return {
+      ok: response.ok,
       status: response.status,
       error: undefined,
       data: camelcaseKeys(await response.json(), { deep: true }) as T,
     }
   } catch (error) {
     return {
+      ok: false,
       status: 500,
       error: {
         code: 'FatalError',

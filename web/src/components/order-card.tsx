@@ -3,6 +3,7 @@ import BeerImage from "./beer-image";
 import { Avatar } from "./ui/avatar";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardFooter } from "./ui/card";
+import Link from "next/link";
 
 function BeerAvatar({ imgName }: { imgName: string }) {
   return (
@@ -19,9 +20,10 @@ type Props = {
   beersCount: number;
   beerImageNames: string[];
   isPaid: boolean;
+  href: string;
 }
 
-export default function OrderCard({ total, roundsCount, beersCount, beerImageNames, isPaid }: Props) {
+export default function OrderCard({ total, roundsCount, beersCount, beerImageNames, isPaid, href }: Props) {
   return (
     <Card className="w-full">
       <CardContent className="flex justify-between items-top pt-8">
@@ -48,7 +50,9 @@ export default function OrderCard({ total, roundsCount, beersCount, beerImageNam
         <span className={cn("py-1 px-4 rounded-full bg-red-200 text-black", isPaid ? "bg-green-200" : "bg-red-200")}>
           {isPaid ? "Paid" : "Unpaid"}
         </span>
-        <Button variant="outline">View Details</Button>
+        <Link href={href}>
+          <Button variant="outline">View Details</Button>
+        </Link>
       </CardFooter>
     </Card>
   )

@@ -15,6 +15,7 @@ function ImplementedOrderCar({ order, beerImageNames }: { order: Order, beerImag
       total={order.total}
       beerImageNames={beerImageNames}
       isPaid={order.paid}
+      href={`/order/${order.id}`}
     />
   )
 }
